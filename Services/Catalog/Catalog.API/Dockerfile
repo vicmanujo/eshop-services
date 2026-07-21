@@ -14,8 +14,8 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copiamos los archivos de proyectos necesarios desde la raíz
-COPY ["Services/Catalog/Catalog.API/Catalog.API.csproj", "Services/Catalog/Catalog.API/"]
-COPY ["BuildingBlocks/BuildingBlocks.csproj", "BuildingBlocks/"]
+COPY ["Catalog.API.csproj", "./"]
+COPY ["../../../BuildingBlocks/BuildingBlocks.csproj", "../../../BuildingBlocks/"]
 
 # Restauramos dependencias
 RUN dotnet restore "./Services/Catalog/Catalog.API/Catalog.API.csproj"
