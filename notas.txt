@@ -1,0 +1,111 @@
+instalar estos paquetes paquetes 
+Carter 9.0.0
+Marten8.37.1
+micosoft.VisualStidio.Azure.Containers.Tool.Targets 1.22.1
+
+dentro del proyecto catalog api agregar una clase llamada GlobalUsing 
+
+esa clase solo contiene las librerias 
+ejemplo 
+global using Carter; y asi
+
+
+se seleciona la solucio dar boton derecho  agregar orquestacion
+  y se crea un archivo linux un archivo dockerfile imagen del contenedor
+   para la version que tengo y nos va a dar la ruta nos va a dar un docker compose;
+
+   Estrategias para levantar un contenedor 
+   se despliega el 
+   docker-compose
+     .dockerignore
+     docker-compose.yml es el principal y al desplegar el nodo 
+       y el secundario
+     launchSetting
+
+
+
+version '3.4'
+
+services:
+
+    catalogdb:
+      container_name: catalogdb
+      image: postgres:15
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: catalogDb
+      restart: always
+      ports:
+        -"5433:5432"
+      volumes:
+        - postgres_catalog:/var/lib/postgresql/data/
+    
+
+    catalog.api:
+      container_name: catalog.api
+      build:
+        context: .
+        dockerfile: Services/Catalog.API/Dockerfile
+      environment:
+        ASPNETCORE_ENVIRONMENT: Development
+        ConnectionString__CatalogDb: Host=catalogogdb;Port=5432;Database=CatalogDb;Username=postgres;Pasword:postgres
+      ports:
+        - "8080:8080"
+      depends_on:
+        .catalogdb
+
+
+nombre del archivo 
+
+version: '3.4'
+
+services: 
+    catalogdb:
+      image: postgres:15
+
+volumes:
+    postgres_catalog:
+
+
+
+
+"Logging": {
+    "LogLevel": {
+        "Default": "Information",
+        "Microsoft.AspNetCore: "Warning"
+    }
+},
+"AllowedHosts": "Server= Port=5432;Database=CatalogDb;User Id=postgres;Password=postgres;Include Error Detail=true"
+
+
+
+
+
+
+
+
+
+
+
+....................................................................................................................
+....................................................................................................................
+
+estudiar estos comandos 
+
+docker ps 
+docker exec -it apuntando al contenedor de posgrest bash
+una vez abierta psql -U postgres
+ \1
+
+ \c CatalogDb
+ \d 
+
+ pgadmin
+
+
+
+
+--------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------__

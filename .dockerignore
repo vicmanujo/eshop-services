@@ -1,0 +1,9 @@
+**/.bin/
+**/.obj/
+**/.vs/
+**/.vscode/
+**/bin/
+**/obj/
+**/out/
+docker-compose.yml
+docker-compose.override.yml

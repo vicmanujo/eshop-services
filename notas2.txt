@@ -1,0 +1,20 @@
+Catalogdb
+posgress como mongo
+
+cadena de conexion 
+
+mismo nombre de yml
+
+makina local conectada dentro de docker
+
+
+metodo create conectar con proyecto iot 
+
+pgadmin4
+
+
+
+-----------------
+levanntar docker 
+integrar con iot
+front para insertar o consultar 

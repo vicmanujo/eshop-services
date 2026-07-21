@@ -1,0 +1,14 @@
+en servis
+
+eb service 
+
+click derecho, nuevo, carpeta Basquet
+
+en servise boton derecho agregar nuevo proyecto , puede ser un ASP.NET Core Web API 
+
+en donde se pone en la carpeta Basket
+y la solucion se va a llamar basquet.API
+
+que tenga lo del contenedor
+
+arquitectura verticar + repository + minimal API

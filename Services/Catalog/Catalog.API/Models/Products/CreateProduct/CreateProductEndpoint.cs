@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BuildingBlocks.CQRS;
+using Mapster;
+using MediatR;
+
+namespace Catalog.API.Models.Products.CreateProduct
+{
+    public record CreateProductRequest(string Name, string Description,
+        List<string> Category, string ImageFiles, decimal Price);
+    public record CreateProductResponse(Guid Id);
+    public class CreateProductEndpoint : ICarterModule
+    {
+        public void AddRoutes(IEndpointRouteBuilder app)
+        {
+            app.MapPost("/products",async (CreateProductRequest request, ISender sender) =>
+            {
+                var command = request.Adapt<CreateProductCommand>();
+                var result = await sender.Send(command);
+                var response = result.Adapt<CreateProductResponse>();
+                return Results.Created($"/products/{response.Id}", response);
+            })
+            .WithName("CrearProducto")
+            .Produces<CreateProductResponse>(StatusCodes.Status201Created)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Crear un nuevo producto")
+            .WithDescription("Crea a nuevo producto y se retorna el identificador de la identidad");
+
+            app.MapGet("/products/test-update", () => 
+            Results.Ok(new { message = "¡El Caballo de Troya funcionó!" }));
+        }
+
+        
+        
+    }
+}
