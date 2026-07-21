@@ -13,7 +13,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# ¡AQUÍ ESTÁ LA MAGIA! Las rutas ajustadas a TU estructura, no a la de tu compañero
+# Copiamos los archivos de proyectos necesarios desde la raíz
 COPY ["Services/Catalog/Catalog.API/Catalog.API.csproj", "Services/Catalog/Catalog.API/"]
 COPY ["BuildingBlocks/BuildingBlocks.csproj", "BuildingBlocks/"]
 
@@ -26,7 +26,7 @@ WORKDIR "/src/Services/Catalog/Catalog.API"
 RUN dotnet build "./Catalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase se usa para publicar el proyecto optimizado
-FROM build AS publish
+FROM base AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./Catalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
@@ -35,5 +35,3 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Catalog.API.dll"]
-
-
