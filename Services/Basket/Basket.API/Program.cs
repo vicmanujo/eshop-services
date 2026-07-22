@@ -50,4 +50,10 @@ app.UseHealthChecks("/health", new HealthCheckOptions
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 
+// Agrega esto justo antes de app.Run(); para ver en los logs de Render qué rutas se mapearon
+foreach (var endpoint in app.Urls)
+{
+    Console.WriteLine($"URL disponible: {endpoint}");
+}
+
 app.Run();
