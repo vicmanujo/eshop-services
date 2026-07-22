@@ -51,7 +51,7 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-app.UseCors("PermisoParaVue");
+app.UseCors("AllowAll");
 
 // Mapeo de rutas
 app.MapCarter();
