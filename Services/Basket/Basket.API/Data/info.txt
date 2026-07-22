@@ -1,0 +1,71 @@
+Donde se aplicae el cache 
+
+redis
+se puede despegar en nuve 
+
+paqute en azure 
+
+Arquitectura horizontal,
+
+tenemos que crear a nuestra propia estructura para consumir la clase cors
+
+esta es la estructura y arquitectura.
+
+----------------------
+
+aplicativo en vue publicado en neftflitifly
+publicar api
+y la base de datos tambien
+
+tres servidores
+
+ubicacion de redis con cache
+
+dentro del aplicativo de vue,
+
+se pueden publicar juntos
+pero cada proyecto aplica al servidor de bd diferente
+y catalog usa memoria de .net
+y basket usa redis
+
+
+instalar  librerias en basket
+
+AspNetCore.HealthChecks.NpgSql version 9.0.0
+AspNetCore.HealthChecks.Redis 9.0.0
+AspNetCore.HealthChecks.Ul.Client 9.0.0
+
+-----------------------------------------
+en el compose boton derecho y establecer como inicio 
+lo primero que se levanta es el docker compose
+--------------------------
+todo es por casos de uso
+
+-------------------------
+el otro cuatri
+yarbc
+patrones de diseño orientados a microservicios
+
+
+Vicmajo1206.
+
+postgresql://postgres:Vicmajo1206.@db.koueynxyaxrfqkjqpukp.supabase.co:5432/postgres
+
+
+git init
+git add .
+git commit -m "Subiendo estructura inicial"
+git branch -M main
+
+cada que queremos guardar se ejecutan los comandos
+git add .
+git commit -m "loque sea "
+git push origin main
+
+
+___________________________________________---------------------------------------------------
+-------------------------------------------------------------
+deep-civet-184738.upstash.io:6379,password=gQAAAAAAAtGiAAIgcDI1MzRlYjQxZDlhMjk0NDhhYWIxZmU4YmY5OGE1ZWMzZQ,ssl=True,abortConnect=False
+
+ggAAAAAAAtGiAAIgcDJFek37xk1UPPqPH0n3xMoEpj-mbZjjWatWrNskwoPwMg
+gQAAAAAAAtGiAAIgcDI1MzRlYjQxZDlhMjk0NDhhYWIxZmU4YmY5OGE1ZWMzZQ
