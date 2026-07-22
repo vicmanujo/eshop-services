@@ -7,11 +7,26 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Carter;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("PermisoParaVue", policy =>
+    {
+       policy.WithOrigins("http://localhost:5173", "https://*.onrender.com")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });   
+});
 
 var assembly = typeof(Program).Assembly;
 
 // Carter detecta automáticamente los módulos en el ensamblado actual
-builder.Services.AddCarter();
+builder.Services.AddCarter(configurator: config => 
+{
+    config.WithModule<Basket.API.Basket.StoreBasket.StoreBasketEndPoint>();
+    config.WithModule<Basket.API.Basket.GetBasket.GetBasketEndPoints>();
+    config.WithModule<Basket.API.Basket.DeleteBasket.DeleteBasketEndPoints>();
+
+});
 
 builder.Services.AddMediatR(config =>
 {
@@ -40,6 +55,7 @@ builder.Services.AddHealthChecks()
     .AddRedis(builder.Configuration.GetConnectionString("Redis")!);
 
 var app = builder.Build();
+app.UseCors("PermisoParaVue");
 
 app.MapCarter();
 
