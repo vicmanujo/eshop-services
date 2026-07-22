@@ -55,5 +55,6 @@ foreach (var endpoint in app.Urls)
 {
     Console.WriteLine($"URL disponible: {endpoint}");
 }
+app.MapGet("/test-basket", () => "¡El microservicio de Basket está vivo y enrutando!");
 
 app.Run();
