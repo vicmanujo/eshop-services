@@ -40,6 +40,16 @@ builder.Services.AddMarten(opts =>
     opts.Connection(builder.Configuration.GetConnectionString("CatalogDb")!);
 }).UseLightweightSessions();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()    // Permite peticiones desde cualquier origen (como tu Netlify)
+              .AllowAnyHeader()    // Permite cualquier tipo de encabezado
+              .AllowAnyMethod();   // Permite GET, POST, PUT, DELETE, etc.
+    });
+});
+
 var app = builder.Build();
 app.UseCors("PermisoParaVue");
 
